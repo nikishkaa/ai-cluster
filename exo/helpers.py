@@ -81,15 +81,17 @@ def find_available_port(host: str = "", min_port: int = 49152, max_port: int = 6
 
 
 def print_exo():
-  os.system('cls' if os.name == 'nt' else 'clear')  # Очищаем экран
-  print("\n" + exo_text)
+  print("\033[2J\033[0;0H", end='')  # Очищаем экран и устанавливаем курсор в позицию 0,0
+  for line in exo_text.split('\n'):
+    print(f"\033[0G{line}")  # Каждую строку начинаем с начала строки
 
 
 def print_yellow_exo():
   yellow = "\033[93m"  # ANSI escape code for yellow
   reset = "\033[0m"  # ANSI escape code to reset color
-  os.system('cls' if os.name == 'nt' else 'clear')  # Очищаем экран
-  print(f"\n{yellow}{exo_text}{reset}")
+  print("\033[2J\033[0;0H", end='')  # Очищаем экран и устанавливаем курсор в позицию 0,0
+  for line in exo_text.split('\n'):
+    print(f"\033[0G{yellow}{line}{reset}")  # Каждую строку начинаем с начала строки
 
 
 def terminal_link(uri, label=None):
