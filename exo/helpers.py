@@ -30,8 +30,7 @@ exo_text = r"""
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║  Instagram: @https://www.instagram.com/__nikishka__/                      ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-    """
+╚══════════════════════════════════════════════════════════════════════════════╝"""
 
 # Single shared thread pool for subprocess operations
 subprocess_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="subprocess_worker")
@@ -82,13 +81,15 @@ def find_available_port(host: str = "", min_port: int = 49152, max_port: int = 6
 
 
 def print_exo():
-  print(exo_text)
+  os.system('cls' if os.name == 'nt' else 'clear')  # Очищаем экран
+  print("\n" + exo_text)
 
 
 def print_yellow_exo():
   yellow = "\033[93m"  # ANSI escape code for yellow
   reset = "\033[0m"  # ANSI escape code to reset color
-  print(f"{yellow}{exo_text}{reset}")
+  os.system('cls' if os.name == 'nt' else 'clear')  # Очищаем экран
+  print(f"\n{yellow}{exo_text}{reset}")
 
 
 def terminal_link(uri, label=None):
