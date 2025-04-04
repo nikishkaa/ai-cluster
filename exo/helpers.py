@@ -85,11 +85,15 @@ def print_exo():
 
 
 def print_colored_exo():
-    # ANSI escape codes for colors
-    cyan = "\033[96m"
-    magenta = "\033[95m"
-    blue = "\033[94m"
+    # Более яркие ANSI цвета
+    cyan = "\033[1;36m"      # Bright Cyan
+    magenta = "\033[1;35m"   # Bright Magenta
+    blue = "\033[1;34m"      # Bright Blue
+    yellow = "\033[1;33m"    # Bright Yellow
     reset = "\033[0m"
+    
+    # Принудительно включаем поддержку цветов
+    os.environ['FORCE_COLOR'] = '1'
     
     # Split the logo into parts
     lines = exo_text.split('\n')
@@ -97,12 +101,14 @@ def print_colored_exo():
     # Color each part differently
     for i, line in enumerate(lines):
         if i < 6:  # Logo lines
-            if "IT" in line:
-                colored_line = cyan + line[:12] + magenta + line[12:48] + blue + line[48:] + reset
-            else:
-                colored_line = cyan + line[:12] + magenta + line[12:48] + blue + line[48:] + reset
+            colored_line = (cyan + line[:12] +    # IT
+                          magenta + line[12:48] + # STEP
+                          blue + line[48:] +      # BY
+                          reset)
             print(colored_line)
-        else:  # Frame and Instagram
+        elif "Instagram" in line:  # Instagram line
+            print(yellow + line + reset)
+        else:  # Frame
             print(cyan + line + reset)
 
 
