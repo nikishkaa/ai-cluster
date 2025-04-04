@@ -88,24 +88,6 @@ def print_exo():
     print(exo_text)
 
 
-def print_colored_exo():
-    # Using colorama colors
-    lines = exo_text.split('\n')
-    
-    # Color each part differently
-    for i, line in enumerate(lines):
-        if i < 6:  # Logo lines
-            colored_line = (Fore.CYAN + line[:12] +     # IT
-                          Fore.MAGENTA + line[12:48] +  # STEP
-                          Fore.BLUE + line[48:] +       # BY
-                          Style.RESET_ALL)
-            print(colored_line)
-        elif "Instagram" in line:  # Instagram line
-            print(Fore.YELLOW + line + Style.RESET_ALL)
-        else:  # Frame
-            print(Fore.GREEN + line + Style.RESET_ALL)
-
-
 def print_yellow_exo():
     print(f"{Fore.YELLOW}{exo_text}{Style.RESET_ALL}")
 
