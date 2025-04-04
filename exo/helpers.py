@@ -15,22 +15,18 @@ import tempfile
 import json
 from concurrent.futures import ThreadPoolExecutor
 import traceback
+from colorama import Fore, Style
 
 DEBUG = int(os.getenv("DEBUG", default="0"))
 DEBUG_DISCOVERY = int(os.getenv("DEBUG_DISCOVERY", default="0"))
 VERSION = "0.0.1"
 
 exo_text = r"""
-██╗████████╗    ███████╗████████╗███████╗██████╗     ██████╗ ██╗   ██╗
-██║╚══██╔══╝    ██╔════╝╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗╚██╗ ██╔╝
-██║   ██║       ███████╗   ██║   █████╗  ██████╔╝    ██████╔╝ ╚████╔╝ 
-██║   ██║       ╚════██║   ██║   ██╔══╝  ██╔═══╝     ██╔══██╗  ╚██╔╝  
-██║   ██║       ███████║   ██║   ███████╗██║         ██████╔╝   ██║   
-╚═╝   ╚═╝       ╚══════╝   ╚═╝   ╚══════╝╚═╝         ╚═════╝    ╚═╝   
-
-╔═════════════════════════════════════════════════════════════════════════╗
-║ Instagram: @https://www.instagram.com/__nikishka__/                     ║
-╚═════════════════════════════════════════════════════════════════════════╝"""
+  _____  _____
+ / _ \ \/ / _ \
+|  __/>  < (_) |
+ \___/_/\_\___/
+    """
 
 # Single shared thread pool for subprocess operations
 subprocess_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="subprocess_worker")
@@ -82,34 +78,6 @@ def find_available_port(host: str = "", min_port: int = 49152, max_port: int = 6
 
 def print_exo():
   print(exo_text)
-
-
-def print_colored_exo():
-    # Более яркие ANSI цвета
-    cyan = "\033[1;36m"      # Bright Cyan
-    magenta = "\033[1;35m"   # Bright Magenta
-    blue = "\033[1;34m"      # Bright Blue
-    yellow = "\033[1;33m"    # Bright Yellow
-    reset = "\033[0m"
-    
-    # Принудительно включаем поддержку цветов
-    os.environ['FORCE_COLOR'] = '1'
-    
-    # Split the logo into parts
-    lines = exo_text.split('\n')
-    
-    # Color each part differently
-    for i, line in enumerate(lines):
-        if i < 6:  # Logo lines
-            colored_line = (cyan + line[:12] +    # IT
-                          magenta + line[12:48] + # STEP
-                          blue + line[48:] +      # BY
-                          reset)
-            print(colored_line)
-        elif "Instagram" in line:  # Instagram line
-            print(yellow + line + reset)
-        else:  # Frame
-            print(cyan + line + reset)
 
 
 def print_yellow_exo():
@@ -403,3 +371,11 @@ def get_exo_images_dir() -> Path:
   images_dir = exo_home/"Images"
   if not images_dir.exists(): images_dir.mkdir(exist_ok=True)
   return images_dir
+
+def test_colors():
+    print(f"{Fore.RED}Red{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}Green{Style.RESET_ALL}")
+    print(f"{Fore.BLUE}Blue{Style.RESET_ALL}")
+    print(f"{Fore.YELLOW}Yellow{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Magenta{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}Cyan{Style.RESET_ALL}")
