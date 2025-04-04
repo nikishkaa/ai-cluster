@@ -89,7 +89,7 @@ def print_exo():
 
 
 def print_yellow_exo():
-    print(f"{Fore.YELLOW}{exo_text}")
+    print(f"{Fore.YELLOW}{exo_text}{Style.RESET_ALL}")
 
 
 def terminal_link(uri, label=None):
