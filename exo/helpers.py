@@ -15,18 +15,26 @@ import tempfile
 import json
 from concurrent.futures import ThreadPoolExecutor
 import traceback
-from colorama import Fore, Style
+from colorama import init, Fore, Style
+
+# Initialize colorama
+init()
 
 DEBUG = int(os.getenv("DEBUG", default="0"))
 DEBUG_DISCOVERY = int(os.getenv("DEBUG_DISCOVERY", default="0"))
 VERSION = "0.0.1"
 
 exo_text = r"""
-  _____  _____
- / _ \ \/ / _ \
-|  __/>  < (_) |
- \___/_/\_\___/
-    """
+██╗████████╗    ███████╗████████╗███████╗██████╗     ██████╗ ██╗   ██╗
+██║╚══██╔══╝    ██╔════╝╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗╚██╗ ██╔╝
+██║   ██║       ███████╗   ██║   █████╗  ██████╔╝    ██████╔╝ ╚████╔╝ 
+██║   ██║       ╚════██║   ██║   ██╔══╝  ██╔═══╝     ██╔══██╗  ╚██╔╝  
+██║   ██║       ███████║   ██║   ███████╗██║         ██████╔╝   ██║   
+╚═╝   ╚═╝       ╚══════╝   ╚═╝   ╚══════╝╚═╝         ╚═════╝    ╚═╝   
+
+╔═════════════════════════════════════════════════════════════════════╗
+║ Instagram: @https://www.instagram.com/__nikishka__/                 ║
+╚═════════════════════════════════════════════════════════════════════╝"""
 
 # Single shared thread pool for subprocess operations
 subprocess_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="subprocess_worker")
@@ -77,13 +85,29 @@ def find_available_port(host: str = "", min_port: int = 49152, max_port: int = 6
 
 
 def print_exo():
-  print(exo_text)
+    print(exo_text)
+
+
+def print_colored_exo():
+    # Using colorama colors
+    lines = exo_text.split('\n')
+    
+    # Color each part differently
+    for i, line in enumerate(lines):
+        if i < 6:  # Logo lines
+            colored_line = (Fore.CYAN + line[:12] +     # IT
+                          Fore.MAGENTA + line[12:48] +  # STEP
+                          Fore.BLUE + line[48:] +       # BY
+                          Style.RESET_ALL)
+            print(colored_line)
+        elif "Instagram" in line:  # Instagram line
+            print(Fore.YELLOW + line + Style.RESET_ALL)
+        else:  # Frame
+            print(Fore.CYAN + line + Style.RESET_ALL)
 
 
 def print_yellow_exo():
-  yellow = "\033[93m"  # ANSI escape code for yellow
-  reset = "\033[0m"  # ANSI escape code to reset color
-  print(f"{yellow}{exo_text}{reset}")
+    print(f"{Fore.YELLOW}{exo_text}{Style.RESET_ALL}")
 
 
 def terminal_link(uri, label=None):
