@@ -21,10 +21,12 @@ DEBUG_DISCOVERY = int(os.getenv("DEBUG_DISCOVERY", default="0"))
 VERSION = "0.0.1"
 
 exo_text = r"""
-  _____  _____  
- / _ \ \/ / _ \ 
-|  __/>  < (_) |
- \___/_/\_\___/ 
+   ███████╗██╗  ██╗ ██████╗ 
+   ██╔════╝╚██╗██╔╝██╔═══██╗
+   █████╗   ╚███╔╝ ██║   ██║
+   ██╔══╝   ██╔██╗ ██║   ██║
+   ███████╗██╔╝ ██╗╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝ ╚═════╝ 
     """
 
 # Single shared thread pool for subprocess operations
