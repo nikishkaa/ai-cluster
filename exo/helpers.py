@@ -33,7 +33,7 @@ exo_text = r"""
 ╚═╝   ╚═╝       ╚══════╝   ╚═╝   ╚══════╝╚═╝         ╚═════╝    ╚═╝
 
 ╔═════════════════════════════════════════════════════════════════════╗
-║ Instagram: @https://www.instagram.com/__nikishka__/                 ║
+║PROD BY: Instagram: @https://www.instagram.com/__nikishka__/         ║
 ╚═════════════════════════════════════════════════════════════════════╝"""
 
 # Single shared thread pool for subprocess operations
