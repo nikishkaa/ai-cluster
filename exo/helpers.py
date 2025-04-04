@@ -103,7 +103,7 @@ def print_colored_exo():
         elif "Instagram" in line:  # Instagram line
             print(Fore.YELLOW + line + Style.RESET_ALL)
         else:  # Frame
-            print(Fore.CYAN + line + Style.RESET_ALL)
+            print(Fore.GREEN + line + Style.RESET_ALL)
 
 
 def print_yellow_exo():
